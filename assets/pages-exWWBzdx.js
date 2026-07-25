@@ -389,9 +389,9 @@ float transitionPattern(int surface,vec2 localUv){
   float paint=1.0-exp(-texture(uPaint,atlasUv).r*.72);vec4 stroke=texture(uStrokeData,atlasUv);
   float pigment=max(max(texture(uDye,atlasUv).r,texture(uDye,atlasUv).g),texture(uDye,atlasUv).b);
   float fluidBody=clamp(paint*.52+stroke.a*.32+pigment*.28,0.0,1.0);
-  vec2 direction=normalize(stroke.xy+vec2(.0001));float ribbon=.5+.5*sin(dot(p,direction)*1.7+stroke.z*21.0+broad*5.0);
+  float flowShape=fbm(seeded*.27+vec3(stroke.xy*2.4,stroke.z*7.1));
   float seamSeed=(1.0-localUv.y)*uSeamBias;
-  return clamp(broad*.30+detail*.16+fluidBody*.38+ribbon*fluidBody*.13+seamSeed*.12+.04,0.0,1.0);
+  return clamp(broad*.31+detail*.17+fluidBody*.40+flowShape*fluidBody*.08+seamSeed*.12+.04,0.0,1.0);
 }
 float transitionOrder(int surface,vec2 localUv,float revealing){
   vec2 dimensions=surfaceDimensions(surface),p=localUv*dimensions,atlasUv=safeAtlasUv(surface,p,uTexel);vec3 world=worldPoint(surface,p);
