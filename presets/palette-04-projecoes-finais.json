@@ -1,0 +1,43 @@
+{
+  "type": "floor-fluid-palettes",
+  "version": 2,
+  "name": "Projeções finais",
+  "palettes": {
+    "oliva": {
+      "name": "Oliva",
+      "colors": ["#473327", "#70653a", "#81784c", "#a87856", "#ca956b"],
+      "material": {
+        "label": "Pincel seco e entrelaçado",
+        "opacity": 0.92,
+        "drying": 0.78,
+        "rake": 1,
+        "impasto": 0.9,
+        "matte": 0.96
+      }
+    },
+    "azul": {
+      "name": "Azul",
+      "colors": ["#050916", "#0c1327", "#141b30", "#681714", "#ce9d68"],
+      "material": {
+        "label": "Massa opaca e ampla",
+        "opacity": 1.08,
+        "drying": 1.25,
+        "rake": 0.92,
+        "impasto": 0.72,
+        "matte": 0.92
+      }
+    },
+    "ocre": {
+      "name": "Ocre",
+      "colors": ["#332b26", "#a78970", "#c79c45", "#ded2bb", "#eee4ce"],
+      "material": {
+        "label": "Velatura fosca e delicada",
+        "opacity": 0.72,
+        "drying": 0.68,
+        "rake": 0.84,
+        "impasto": 0.46,
+        "matte": 0.98
+      }
+    }
+  }
+}
