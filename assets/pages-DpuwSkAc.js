@@ -721,7 +721,9 @@ vec3 shadeSurface(int surface,vec2 localUv){
   float specular=pow(max(dot(normal,halfVector),0.0),mix(72.0,14.0,roughness))*mix(.075,.022,roughness)*strokeMask*(.76+.24*ridge);
   vec3 pigment=max(raw*uExposure,vec3(0));pigment*=.91+.12*detail;
   float coverage=clamp(uBaseCoverage+density*.58,0.0,1.0),underpaint=(noise3(world*.62)-.5)*.055;
-  vec3 color=mix(uGround*(1.0+underpaint),mix(uGround,pigment,.84),coverage);color=color*diffuse+specular;
+  // Walls have a neutral charcoal base instead of inheriting the active palette.
+  vec3 ground=surface==SURFACE_FLOOR?uGround:srgbToLinear(vec3(.18));
+  vec3 color=mix(ground*(1.0+underpaint),mix(ground,pigment,.84),coverage);color=color*diffuse+specular;
   float canvas=texture(uCanvasTex,p*vec2(.32)).r-.5,canvasStrength=uCanvasOverlay*(1.0-coverage*.88);
   color*=1.0+canvas*canvasStrength*.12;color=max(color,vec3(0));color=color/(1.0+color*.14);
   color=mix(vec3(dot(color,vec3(.2126,.7152,.0722))),color,.95);
